@@ -1,0 +1,4 @@
+umbral_puntos,diferencia_observada_menor,IC_clasico_dentro_de_mas_menos_umbral,IC_boot_dentro_de_mas_menos_umbral
+0.05,True,True,True
+0.1,True,True,True
+0.2,True,True,True
