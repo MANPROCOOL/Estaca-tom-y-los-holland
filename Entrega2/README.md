@@ -1,48 +1,43 @@
-# Entrega 2 — Grupo 17 — Airbnb NYC
+# Entrega 2 — Grupo 25 — Airbnb NYC
 
-INF280, Estadística Computacional. José Flores, Sebastian Alcaide, Pedro Ortiz y Miguel Primera.
+INF280, Estadística Computacional. José Flores, Sebastian Alcaide, Pedro Ortiz y Miguel Primera. Tutor: Cristobal Duarte.
 
-La entrega estima las medias de calificación de Manhattan y Brooklyn y su diferencia. Implementa bootstrap propio con 20.000 réplicas y Monte Carlo con 20.000 realizaciones por escenario y condición.
+La entrega estima las medias de calificación de Manhattan y Brooklyn y su diferencia. Implementa bootstrap propio con B=20.000 réplicas y Monte Carlo con R=20.000 realizaciones por escenario y condición.
 
-## Archivos
+## Contenido
 
 | Archivo o carpeta | Contenido |
-| --- | --- |
-| `Entrega2_Grupo17_Airbnb.ipynb` | Notebook independiente, con código, explicaciones y resultados ejecutados. |
-| `presentacion/Entrega2_Grupo17_Airbnb_revisada.pptx` | Presentación revisada de 17 diapositivas; tablas y gráficos editables, con notas del expositor. |
-| `presentacion/Entrega2_Grupo17_Airbnb_revisada.pdf` | Versión revisada de las diapositivas para visualizar o proyectar. |
-| `GUIA_EXPOSICION.md` | Reparto sugerido y preguntas para preparar la exposición. |
-| `data/Airbnb_Open_Data.csv` | Datos originales, versión 1 de la fuente de Kaggle. |
-| `resultados/` | Figuras, tablas CSV, resumen JSON y réplicas comprimidas del notebook. |
-| `requirements.txt` | Versiones de las bibliotecas utilizadas en la ejecución comprobada. |
+|---|---|
+| `Entrega2_Grupo25_Airbnb.ipynb` | Notebook independiente, ejecutado, con 18 celdas de código. |
+| `presentacion/Presentacion_Entrega2_Grupo25.pptx` | Presentación de 13 diapositivas con gráficos y tablas editables, y notas. |
+| `presentacion/Presentacion_Entrega2_Grupo25.pdf` | Versión para visualizar o proyectar. |
+| `Revision_y_presentacion_Grupo25.docx` | Revisión final y reparto de la exposición. |
+| `GUIA_EXPOSICION_Grupo25.md` | Guion de 13 diapositivas, cifras y preguntas de preparación. |
+| `data/Airbnb_Open_Data.csv` | CSV original, versión 1 de Kaggle. |
+| `resultados/` | Figuras, tablas, resumen JSON y réplicas de esta ejecución. |
+| `requirements.txt` | Versiones comprobadas de las bibliotecas. |
 
-## Ejecutar en VS Code
+## Ejecutar
 
-1. Extraer el ZIP completo, conservando la carpeta `entrega2` y sus subcarpetas.
-2. Abrir esa carpeta en VS Code y abrir el notebook.
-3. Seleccionar el entorno de Python con NumPy, pandas, SciPy, Matplotlib e IPython/ipykernel.
-4. Reiniciar el kernel y ejecutar todas las celdas, en orden. No es necesario ejecutar primero la Entrega 1.
+1. Extraer el ZIP completo, conservando `entrega2/` y sus subcarpetas.
+2. Abrir `entrega2/` en VS Code o Jupyter y seleccionar un entorno de Python 3.12.
+3. Instalar las dependencias desde esa carpeta: `python -m pip install -r requirements.txt`.
+4. Reiniciar el kernel y ejecutar las celdas en orden. No hace falta ejecutar primero la Entrega 1.
 
-Las versiones fijadas de las bibliotecas requieren Python 3.12 o posterior; el entorno comprobado utiliza Python 3.14.7. Para instalar las dependencias en un entorno propio, ejecutar desde la carpeta `entrega2`:
+El entorno comprobado usa Python 3.12.14, NumPy 2.3.5, pandas 2.2.3, SciPy 1.17.0 y Matplotlib 3.10.8. La ejecución incluye el CSV y no necesita descargar datos. En Colab, situar el CSV en `data/Airbnb_Open_Data.csv`. La descarga opcional mediante `kagglehub` se usa solo si falta el archivo.
 
-```powershell
-python -m pip install -r requirements.txt
-```
+SHA-256 del CSV: `ecb59a7598d2aaf7dc2ed00c724648a319d93a916a3d4767e2bed0dbe0f1a7f8`. El notebook detiene la ejecución si no coincide.
 
-El CSV incluido permite ejecutar el análisis sin descargar datos y se verifica mediante SHA-256. El notebook también busca la caché local de Kaggle y, como alternativa opcional, permite descargar la versión 1 con `kagglehub`. Las semillas, tamaños y número de repeticiones están definidos en el notebook.
+Las semillas y los tamaños están definidos al inicio. NumPy no garantiza secuencias idénticas entre todas sus versiones y plataformas. Si se cambia el entorno, las cifras de simulación pueden variar: deben interpretarse junto con su error Monte Carlo. La presentación y la guía de este paquete usan las cifras de la ejecución comprobada.
 
-Si se incorpora al proyecto existente, copiar la carpeta `entrega2` completa dentro de `Estaca-tom-y-los-holland`. La copia del notebook que ya está en la raíz puede abrirse por separado; mantener la estructura completa facilita reproducir la entrega en otro computador.
+## Interpretación
 
-## Lectura de los resultados
+La diferencia estimada es 0,0181 puntos en una escala codificada 1–5. Los IC clásico y bootstrap casi coinciden. La potencia bajo el modelo ajustado es aproximadamente 53% con los tamaños originales. La inferencia está condicionada a los anuncios calificados de esta fuente y a los supuestos de independencia y estabilidad. No identifica causalidad ni demuestra representatividad del mercado de NYC.
 
-La diferencia estimada es aproximadamente 0,0181 puntos en una escala de 1 a 5. Los intervalos clásico y bootstrap son similares. Las simulaciones muestran cómo el tamaño muestral modifica la precisión y la detección de una diferencia pequeña.
+Las cotas de faltantes [0,0059; 0,0299] son límites descriptivos para el conjunto ampliado con distrito conocido. No son intervalos de confianza. Los umbrales de magnitud 0,05, 0,10 y 0,20 son exploratorios.
 
-La inferencia está condicionada a los anuncios calificados de esta fuente y a los supuestos del modelo. No establece causalidad ni representatividad probabilística del mercado de Nueva York. Los umbrales de precisión utilizados son referencias exploratorias.
+## Entrega
 
-La sección 8.1 añade un diagnóstico descriptivo de calificaciones faltantes: si todas estuvieran entre 1 y 5, la diferencia entre todos los anuncios registrados con distrito conocido quedaría entre 0,0059 y 0,0299 puntos. Estas cotas no son intervalos de confianza. Las comprobaciones finales del notebook contrastan Welch y Wilson con funciones independientes de SciPy.
+El paquete final se llama `entrega2-grupo25.zip`. Incluye notebook, presentación, CSV y dependencias. La revisión y el guion son material de apoyo. La declaración de IA distingue el análisis y la actualización de ChatGPT/Codex del aporte de Claude a la revisión y presentación inicial.
 
-## Preparación de la entrega
-
-El paquete final se llama `entrega2-grupo17.zip`. La pauta indica entrega del notebook y presentación. Las notas de las diapositivas complementan la explicación oral; el PDF reproduce su contenido visible.
-
-Antes de enviar, cada integrante debe ejecutar o revisar el notebook, comprobar su nombre y comprender los supuestos y resultados. El notebook y la presentación incluyen una declaración de apoyo de ChatGPT/Codex. No se afirma que la revisión individual del grupo ya haya ocurrido.
+Para incorporar al proyecto local, copiar la carpeta `entrega2` completa. Revisar el notebook y ensayar la exposición antes de enviar a AULA.
