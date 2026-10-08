@@ -8,10 +8,11 @@ La entrega estima las medias de calificación de Manhattan y Brooklyn y su difer
 
 | Archivo o carpeta | Contenido |
 |---|---|
-| `Entrega2_Grupo25_Airbnb.ipynb` | Notebook independiente, ejecutado, con 18 celdas de código. |
+| `Entrega2_Grupo25_Airbnb.ipynb` | Notebook ejecutado con 18 celdas numeradas y comentadas; incluye ejemplos de lectura. |
 | `presentacion/Presentacion_Entrega2_Grupo25.pptx` | Presentación de 13 diapositivas con gráficos y tablas editables, y notas. |
 | `presentacion/Presentacion_Entrega2_Grupo25.pdf` | Versión para visualizar o proyectar. |
 | `Revision_y_presentacion_Grupo25.docx` | Revisión final y reparto de la exposición. |
+| `CLASE_Entrega2_Grupo25.md` | Clase breve y relación entre el código y los requisitos del enunciado. |
 | `GUIA_EXPOSICION_Grupo25.md` | Guion de 13 diapositivas, cifras y preguntas de preparación. |
 | `data/Airbnb_Open_Data.csv` | CSV original, versión 1 de Kaggle. |
 | `resultados/` | Figuras, tablas, resumen JSON y réplicas de esta ejecución. |
